@@ -66,8 +66,6 @@ public class LexicalAnalyzer {
         for (String line : file_lines) {
             State state = State.ZERO;
             StringBuilder sb = new StringBuilder();
-            System.out.println(line);
-            System.out.println("====================================");
             for (char c : line.toCharArray()) {
                 switch (state) {
                     case FORTEEN:
@@ -85,7 +83,6 @@ public class LexicalAnalyzer {
                                 symbolTable.add(sb.toString());
                             }
                             sb = new StringBuilder();
-                            System.out.println(tokens);
                         }
                         break;
                     case SIXTEEN:
@@ -96,7 +93,6 @@ public class LexicalAnalyzer {
                             state = State.ZERO;
                             tokens.add(Token.normal(TokenKind.fromString("IntConst"), sb.toString()));
                             sb = new StringBuilder();
-                            System.out.println(tokens);
                         }
 
                         break;
@@ -134,7 +130,6 @@ public class LexicalAnalyzer {
                     }
                 }
             }
-            System.out.println("==================");
         }
 
         tokens.add(Token.normal(TokenKind.eof(), ""));
