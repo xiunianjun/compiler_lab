@@ -1,0 +1,3 @@
+int a;
+int c;
+c = 3-a;
