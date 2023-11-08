@@ -161,47 +161,7 @@ public class AssemblyGenerator {
                     }
                     break;
                 case ADD:
-                    if (variables.containsKey(itr.getResult())) {
-                        variables.get(itr.getResult()).IncreaseRefcnt();
-                    } else {
-                        variables.put(itr.getResult(), new RegisterInfo());
-                    }
-                    if (itr.getLHS().isIRVariable()) {
-                        if (variables.containsKey(itr.getLHS())) {
-                            variables.get(itr.getLHS()).IncreaseRefcnt();
-                        } else {
-                            variables.put((IRVariable) itr.getLHS(), new RegisterInfo());
-                        }
-                    }
-                    if (itr.getRHS().isIRVariable()) {
-                        if (variables.containsKey(itr.getRHS())) {
-                            variables.get(itr.getRHS()).IncreaseRefcnt();
-                        } else {
-                            variables.put((IRVariable) itr.getRHS(), new RegisterInfo());
-                        }
-                    }
-                    break;
                 case SUB:
-                    if (variables.containsKey(itr.getResult())) {
-                        variables.get(itr.getResult()).IncreaseRefcnt();
-                    } else {
-                        variables.put(itr.getResult(), new RegisterInfo());
-                    }
-                    if (itr.getLHS().isIRVariable()) {
-                        if (variables.containsKey(itr.getLHS())) {
-                            variables.get(itr.getLHS()).IncreaseRefcnt();
-                        } else {
-                            variables.put((IRVariable) itr.getLHS(), new RegisterInfo());
-                        }
-                    }
-                    if (itr.getRHS().isIRVariable()) {
-                        if (variables.containsKey(itr.getRHS())) {
-                            variables.get(itr.getRHS()).IncreaseRefcnt();
-                        } else {
-                            variables.put((IRVariable) itr.getRHS(), new RegisterInfo());
-                        }
-                    }
-                    break;
                 case MUL:
                     if (variables.containsKey(itr.getResult())) {
                         variables.get(itr.getResult()).IncreaseRefcnt();
