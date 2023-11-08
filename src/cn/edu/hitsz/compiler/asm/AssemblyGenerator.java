@@ -242,9 +242,10 @@ public class AssemblyGenerator {
      */
     public void run() {
         // TODO: 执行寄存器分配与代码生成
-        // when a variable's refcnt drop to zero, it should release the register immediately
+        asm.add(".text");
         for (Instruction itr : itrs) {
             StringBuilder sb = new StringBuilder();
+            sb.append("\t");
             switch (itr.getKind()) {
                 case MOV:
                     if (itr.getFrom().isImmediate()) {
@@ -260,6 +261,12 @@ public class AssemblyGenerator {
                     }
                     break;
                 case RET:
+                    if (itr.getReturnValue().isIRVariable()) {
+                        int reg1 = getRegister(itr.getReturnValue());
+                        sb.append("mv a0, t" + new Integer(reg1).toString());
+                    } else {
+                        sb.append("mv a0, " + itr.getReturnValue().toString());
+                    }
                     break;
                 case ADD:
                     int reg1 = getRegister(itr.getResult());
@@ -288,6 +295,7 @@ public class AssemblyGenerator {
                     sb.append("mul t" + new Integer(reg1).toString() + ", t" + new Integer(reg2).toString() + ", t" + new Integer(reg3).toString());
                     break;
             }
+            sb.append("\t\t# " + itr.toString());
             asm.add(sb.toString());
             proccessInvalid();
         }
