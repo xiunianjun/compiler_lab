@@ -79,6 +79,8 @@ public class IRGenerator implements ActionObserver {
                 irs.add(Instruction.createMul(t, rhs, lhs));
                 irStack.push(t);
                 break;
+            default:
+                break;
         }
     }
 

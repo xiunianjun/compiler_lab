@@ -129,6 +129,8 @@ public class AssemblyGenerator {
                 case RET:
                     itrs.add(itr);
                     break;
+                default:
+                    break;
             }
         }
 
@@ -221,6 +223,8 @@ public class AssemblyGenerator {
                         }
                     }
                     break;
+                default:
+                    break;
             }
         }
 
@@ -294,6 +298,8 @@ public class AssemblyGenerator {
                     int reg3 = getRegister(itr.getRHS());
                     sb.append("mul t" + new Integer(reg1).toString() + ", t" + new Integer(reg2).toString() + ", t" + new Integer(reg3).toString());
                     break;
+                default:
+                    break;
             }
             sb.append("\t\t# " + itr.toString());
             asm.add(sb.toString());
@@ -311,7 +317,6 @@ public class AssemblyGenerator {
     }
 
     private int getRegister(IRValue result) {
-        System.out.println(result.toString());
         int registerNo = variables.get(result).getRegisterNo();
         if (registerNo != Integer.MAX_VALUE) {
             variables.get(result).DecreaseRefcnt();

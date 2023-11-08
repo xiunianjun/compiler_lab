@@ -41,6 +41,8 @@ public class SemanticAnalyzer implements ActionObserver {
                 }
                 attributeStack.pop();
                 break;
+            default:
+                break;
         }
     }
 
